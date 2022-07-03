@@ -25,7 +25,8 @@ function downloadPages(nextPage) {
     downloadPage(page.toString());
     nextButton.click();
 
-    if (percentComplete !== 100) {
+    // in some cases the book ends on 99% and never reaches 100%
+    if (percentComplete < 99) { 
         setTimeout(() => {
             downloadPages(page + 1);
         }, 1000);
